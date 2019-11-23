@@ -7,7 +7,8 @@ class Remote():
         if host == None:
             self.host = input('Enter a host: ')
         else:
-            self.host = host
+            with open(host, 'r') as f:
+                self.host = f.read()[:-1]
 
         if pswfile == None:
             self.mode = '-p'
@@ -44,16 +45,6 @@ class Remote():
             p1 = subprocess.run(self.command2, capture_output=True, text=True)
 
         if p1.returncode == 0:
-            print('returncode: ', p1.returncode)
-            print('stdout: ', p1.stdout)
+            return p1.stdout
         else:
-            print('stderr: ', p1.stderr)
-
-
-a = Remote('levi@192.168.56.101', 'passwords.txt')
-a.execute()
-
-
-# sshpass -p 'testing321' scp -P 22 ~/Desktop/hahaha.txt levi@192.168.56.101:/home/levi/Desktop/gooddd.txt
-
-# sshpass -p 'testing321' scp -P 22 levi@192.168.56.101:/home/levi/Desktop/gooddd.txt ~/Desktop/well_done_gooddd.txt
+            return p1.stderr
