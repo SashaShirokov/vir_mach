@@ -39,12 +39,5 @@ class Remote():
             input('Please, enter the correct command.')
 
     def execute(self):
-        if self.mode == '-f':
-            p1 = subprocess.run(self.command2, capture_output=True, text=True)
-        else:
-            p1 = subprocess.run(self.command2, capture_output=True, text=True)
-
-        if p1.returncode == 0:
-            return p1.stdout
-        else:
-            return p1.stderr
+        p1 = subprocess.run(self.command2, capture_output=True, text=True)
+        return p1
