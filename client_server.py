@@ -17,4 +17,6 @@ class MyClient(object):
     def __init__(self, hostfile, passfile):
         self.hostfile = hostfile
         self.passfile = passfile
+
+    def run(self):
         self.client = r(self.hostfile, self.passfile)
