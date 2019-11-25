@@ -9,16 +9,22 @@ class Output:
             'result': '',
             'status': ''
         }
+        self.my_status = 0
         self.s = cs.MyServer(hostfile, passfile)
         self.write_res()
-        self.get_res()
+        if self.my_status == 1:
+            self.get_res()
+        else:
+            self.get_res2()
         self.print_res()
 
     def write_res(self):
         with open('result.txt', 'w') as f:
             p = self.s.server.execute()
             self.final_res['status'] = p.returncode
-            if p.returncode == 1:
+            if (p.returncode == 0 and p.stdout == '') or (p.returncode == 0 and p.stdout[0] == '-'):
+                self.my_status = 1
+            if p.returncode != 0:
                 self.final_res['error'] = p.stderr
             f.write(p.stdout)
 
@@ -27,6 +33,7 @@ class Output:
             res = []
             res_json = {}
             a = f.read().split('\n')
+
             for i, l in enumerate(a):
                 if i == 4 or i == len(a) - 2:
                     res.append(l)
@@ -41,6 +48,10 @@ class Output:
                     res_json['Bandwidth'] = d[6]
 
             self.final_res['result'] = res_json
+
+    def get_res2(self):
+        with open('result.txt', 'r') as f:
+            self.final_res['result'] = f.read()
 
     def print_res(self):
         print(self.final_res)
