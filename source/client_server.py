@@ -1,7 +1,7 @@
-from remote import Remote as r
+from remote import Remote
 
 
-class MyServer(object):
+class MyServer:
     _instance = None
 
     def __new__(self, hostfile, passfile):
@@ -9,7 +9,7 @@ class MyServer(object):
         self.passfile = passfile
         if not self._instance:
             self._instance = super(MyServer, self).__new__(self)
-            self.server = r(self.hostfile, self.passfile)
+            self.remote_server = Remote(self.hostfile, self.passfile)
         return self._instance
 
 

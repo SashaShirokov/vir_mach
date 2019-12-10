@@ -1,0 +1,12 @@
+-----------------------------------------------------------
+Server listening on 5201
+-----------------------------------------------------------
+Accepted connection from 192.168.56.100, port 55570
+[  5] local 192.168.56.101 port 5201 connected to 192.168.56.100 port 55572
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec   460 MBytes  3.85 Gbits/sec                  
+[  5]   1.00-2.00   sec   400 MBytes  3.36 Gbits/sec                  
+[  5]   2.00-2.04   sec  20.8 MBytes  4.50 Gbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-2.04   sec   881 MBytes  3.62 Gbits/sec                  receiver

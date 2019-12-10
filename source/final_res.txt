@@ -1,0 +1,1 @@
+{'error': '', 'result': {'serverIP': '192.168.56.101', 'clientIP': '192.168.56.100', 'Interval': '0.00-2.04', 'Transfer': '881', 'Bandwidth': '3.62'}, 'status': 0}
